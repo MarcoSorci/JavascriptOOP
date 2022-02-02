@@ -1,20 +1,34 @@
 class Teacher {
     constructor(name, surname, age, gender, degree) {
-        this.student
+        this.name = name
+        this.surname = surname
+        this.age = age
+        this.gender = gender
+        this.degree = degree
+        this.students = []
     }
 
 
     tostring() {
-        let teacherdesc = "Name: " + this.name + "\n" +
+        let teacherdesc = "TEACHER:"+ "\n" +
+            "Name: " + this.name + "\n" +
             "Surname: " + this.surname + "\n" +
             "Age: " + this.age + "\n" +
-            "Degree: " + this.degree
-        return studentdesc
+            "Degree: " + this.degree 
+            if (this.students.length === 0) {
+                teacherdesc += "\n-----------------\nThe teacher has no students assigned"
+            } else {
+                for (let i = 0; i < this.students.length; i++) {
+                    let studentdesc = "\n-----------------\nSTUDENT " + (i + 1) + "\n" + this.students[i].tostring();
+                    teacherdesc += studentdesc;
+                }
+            }
+        return teacherdesc
     }
 
 
 
-    addstudent(student) {
+    addstudent(studentgiven) {
         // let hasstudent = false
         // for (const stud of this.students) {
         //     if (stud.generatecode() === student.generatecode()){
@@ -25,12 +39,12 @@ class Teacher {
         //     this.students.push(student)
         // }
 
-        for (const stud of this.students) {
-            if (stud.generatecode() === student.generatecode()) {
+        for (const student of this.students) {
+            if (studentgiven.generatecode() === student.generatecode()) {
                 console.log("This student is already in the database");
                 return  //break would still enter 
             }
-        } this.students.push(student)
+        } this.students.push(studentgiven)
 
         // let hasstudent = this.student.some(stud => stud.generatecode() === student.generatecode())
         // if (hasstudent === false) {
@@ -63,7 +77,7 @@ class Teacher {
     beststudent() {
         if (this.students.length === 0) {
             return "none best"
-        }   
+        }
         // let beststudent=this.students[0]
         // for (let i = 1; i < this.students.length; i++) {
         //     const stud = this.students[i];

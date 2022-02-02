@@ -32,10 +32,11 @@ class Student {
             mean = "N/C"
         }
 
-        let studentdesc = "Name: " + this.name + "\n" +
-        "Surname: " + this.surname + "\n" +
-        "Age: " + this.age + "\n" +
-        "Grade Median: " + mean
+        let studentdesc = "STUDENT: \n" +
+            "Name: " + this.name + "\n" +
+            "Surname: " + this.surname + "\n" +
+            "Age: " + this.age + "\n" +
+            "Grade Median: " + mean
         return studentdesc
     }
 }
@@ -44,5 +45,5 @@ class Student {
 //array di students
 //tostring() that prints teacher data, then using student tostring cycles, print the student data
 //addstudent(student) only if student not already in, add to array (same studentcode)
-//addgrade(studentcode, grade) 
+//addgrade(studentcode, grade)
 //beststudent(), print the data of the student with highest grade median 

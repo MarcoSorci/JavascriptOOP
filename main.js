@@ -7,23 +7,40 @@ student1.addgrade(3)
 student1.addgrade(2.5)
 
 let student2 = new Student("paperino", "duck", 13, "m")
+let student3 = new Student("oparina", "mack", 14, "f")
+let student4 = new Student("gogarina", "kack", 14, "f")
+let student5 = new Student("asds", "das", 14, "m")
 
-console.log(student1.calculatemean()); //calls function in the other js
-console.log(student1.generatecode());
-console.log(student1.tostring());
-console.log(student2.tostring());
+// console.log(student1.calculatemean()); //calls function in the other js
+// console.log(student1.generatecode());
+// console.log(student1.tostring());
+// console.log(student2.tostring());
 
-let teacher = new Teacher("paperone","duck", 80, "m", "terza media")
+let teacher = new Teacher("paperone", "duck", 80, "m", "quarta media")
+let teacher2 = new Teacher("tipa", "duckiana", 30, "f", "quinta media")
 
 teacher.addstudent(student1)
 teacher.addstudent(student2)
 teacher.addgrade("padu2009", 7)
 teacher.addgrade("padu2009", 3)
+teacher2.addstudent(student3)
+teacher2.addstudent(student4)
+teacher2.addgrade("opma2008", 4)
+teacher2.addgrade("opma2008", 5)
+teacher2.addgrade("goka2008", 8)
+teacher2.addgrade("goka2008", 6)
+// console.log(teacher.tostring());
+// console.log(teacher2.tostring());
 
-//CREATE OBJECT CALLED PRINCIPAL, schoolname instead of degree, teacherarray
-//addteacher
-//addstudenttoteacher given a sudent surname add to teacher
-//bestteacher one with highest beststudent
+let principal = new Principal("Talideital", "Taldeitali", 81, "f", "The Worst School Ever")
+
+principal.addteacher(teacher)
+principal.addteacher(teacher2)
+student5.addgrade(8)
+principal.addstudenttoteacher("duckiana", student5)
+console.log(principal.tostring());
+console.log(principal.bestteacher());
+
 
 
 
