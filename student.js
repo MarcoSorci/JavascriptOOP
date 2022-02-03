@@ -1,31 +1,50 @@
-class Student {
+class Student extends Person {  //extends takes the properties from person into here, can only have one parent
     constructor(name, surname, age, gender) {
-        this.name = name  //this indicates the object that gets created by the constructor
-        this.surname = surname
-        this.age = age
-        this.gender = gender
-        this.grades = []
+        // this.name = name  //this indicates the object that gets created by the constructor
+        super (name, surname, age, gender) //calls the needed properties
+        this._grades = []  //underscore asks not to touch basically
     }
-    addgrade(grade) {
-        if (grade >= 0 && grade <= 10) {
-            this.grades.push(grade)
+
+    set grade(value) {
+        if (value >= 0 && value <= 10) {
+            this._grades.push(value)
         }
     }
+
+    // addgrade(grade) {
+    //     if (grade >= 0 && grade <= 10) {
+    //         this._grades.push(grade)
+    //     }
+    // }
+
+
+    // get grades(){   //get makes it so it can't be changed, named the value with _ only without it
+    //     return this._grades
+    // }
+
+    get yob() {
+        let now = new Date()
+        let yob = now.getFullYear - this.age
+        return yob
+    }
+
+    set yob(value) {                     //they calculate things on runtime, so it's best to do with age rather than year of birth as it changes
+        let now = new Date()
+        this.age = now.getFullYear() - value
+    }
+
+
+
+
     calculatemean() {
-        if (this.grades.length === 0) {
+        if (this._grades.length === 0) {
             return -1
         }
-        let sum = this.grades.reduce((p, c) => p + c, 0)
-        let mean = sum / this.grades.length
+        let sum = this._grades.reduce((p, c) => p + c, 0)
+        let mean = sum / this._grades.length
         return mean
     }
-    generatecode() {
-        let now = new Date()      //prints current date and time
-        let actualyear = now.getFullYear()  //prints current year
-        let birthyear = actualyear - this.age
-        let code = this.name[0] + this.name[1] + this.surname[0] + this.surname[1] + birthyear
-        return code
-    }
+
     tostring() {
         let mean = this.calculatemean()
         if (mean === -1) {
@@ -36,7 +55,7 @@ class Student {
             "Name: " + this.name + "\n" +
             "Surname: " + this.surname + "\n" +
             "Age: " + this.age + "\n" +
-            "Grade Median: " + mean
+            "Grade Median: " + mean + "\n"
         return studentdesc
     }
 }

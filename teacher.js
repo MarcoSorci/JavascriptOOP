@@ -1,9 +1,6 @@
-class Teacher {
+class Teacher extends Person {
     constructor(name, surname, age, gender, degree) {
-        this.name = name
-        this.surname = surname
-        this.age = age
-        this.gender = gender
+        super (name, surname, age, gender)
         this.degree = degree
         this.students = []
     }
@@ -19,9 +16,12 @@ class Teacher {
                 teacherdesc += "\n-----------------\nThe teacher has no students assigned"
             } else {
                 for (let i = 0; i < this.students.length; i++) {
-                    let studentdesc = "\n-----------------\nSTUDENT " + (i + 1) + "\n" + this.students[i].tostring();
+                    let studentdesc = "\n-----------------\n" + "\n" + this.students[i].tostring();
                     teacherdesc += studentdesc;
                 }
+                // for (const stud of this.students) {
+                //     teacherdesc += stud.tostring() + "\n\n"
+                // }
             }
         return teacherdesc
     }
@@ -69,7 +69,7 @@ class Teacher {
 
         this.students.forEach(stud => {
             if (stud.generatecode() === studentcode) {
-                stud.addgrade(grade)
+                stud.grade = grade
             }
         });
     }
@@ -85,10 +85,9 @@ class Teacher {
         //         beststudent = stud
         //     }
         // } return beststudent.tostring()
-        return this.students.reduce((p, c) => p.calculatemean() > c.calculatemean() ? p : c).tostring
+        return this.students.reduce((p, c) => p.calculatemean() > c.calculatemean() ? p : c)
 
 
     }
-
 
 }
